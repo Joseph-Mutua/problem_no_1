@@ -1,5 +1,6 @@
 # import all functions from the http.server module
 from http.server import *
+import time
 
 HOST = "127.0.0.1"
 PORT= 8080
@@ -15,14 +16,19 @@ class echoHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         
         # specify the file type to be send
-        self.send_header("content-type", "text/html")
+        self.send_header("Content-type", "text/html")
         self.end_headers()
         
         # The content to be displayed on the web-server
         self.wfile.write("<h1> My simple Python Webserver</h1>".encode())
+      
+    # create function for the POST request
+    def do_POST(self):
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
         
-    
-        
+        date = time.strftime("%Y-/%m-/%d, %H: %M: %S", time.localtime(time.time()))
+        self.wfile.write("{'time': date}", "utf-8")
         
 # create an object to take the port number and server-name
 server = HTTPServer((HOST, PORT), echoHandler)
@@ -30,4 +36,4 @@ server = HTTPServer((HOST, PORT), echoHandler)
 # Run the server for as long as you like
 server.serve_forever()
 server.server_close()
-print("Server is now running..")
+print("Server has Stopped")
