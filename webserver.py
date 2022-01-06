@@ -1,6 +1,10 @@
 # import all functions from the http.server module
 from http.server import *
 
+HOST = "127.0.0.1"
+PORT= 8080
+
+
 # create a class for handling GET and POST requests
 class echoHandler(BaseHTTPRequestHandler):
      
@@ -17,9 +21,13 @@ class echoHandler(BaseHTTPRequestHandler):
         # The content to be displayed on the web-server
         self.wfile.write("<h1> My simple Python Webserver</h1>".encode())
         
+    
+        
         
 # create an object to take the port number and server-name
-port = HTTPServer(('', 8080), echoHandler)
+server = HTTPServer((HOST, PORT), echoHandler)
 
 # Run the server for as long as you like
-port.serve_forever()
+server.serve_forever()
+server.server_close()
+print("Server is now running..")
