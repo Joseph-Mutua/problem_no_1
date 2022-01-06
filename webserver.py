@@ -28,7 +28,7 @@ class echoHandler(BaseHTTPRequestHandler):
         self.end_headers()
         
         date = time.strftime("%Y-/%m-/%d, %H: %M: %S", time.localtime(time.time()))
-        self.wfile.write("{'time': date}", "utf-8")
+        self.wfile.write({'time': date}, "utf-8")
         
 # create an object to take the port number and server-name
 server = HTTPServer((HOST, PORT), echoHandler)
