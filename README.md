@@ -102,3 +102,4 @@ To run this server clone this repo from this [link](https://github.com/Joseph-Mu
 127.0.0.1 - - [07/Jan/2022 12:10:20] "POST / HTTP/1.1" 200 -
 The date today is 2022-/01-/07, 12: 10: 20
 ```
+You can now jump into your bowser and got to the address *http://localhost:8080/* to view the live version (GET response)  or use the ***curl*** command to ping the address for the POST response.
